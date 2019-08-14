@@ -17,4 +17,8 @@ public class CommandLineProcessor extends Processor {
         }
     }
 
+    public static void main(String[] args) throws Exception {
+        new CommandLineProcessor().validateAndProcess("create_parking_lot 6");
+    }
+
 }

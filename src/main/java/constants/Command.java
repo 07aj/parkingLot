@@ -15,10 +15,12 @@ public enum Command {
     private Command(String s) {
         name = s;
     }
-
-    public static Command findByName(String abbr){
+    public String toString() {
+        return name;
+    }
+    public static Command findByName(String command){
         for(Command c : values()){
-            if( c.toString().equals(abbr)){
+            if( c.toString().equals(command)){
                 return c;
             }
         }

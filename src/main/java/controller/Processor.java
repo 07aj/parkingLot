@@ -9,7 +9,7 @@ public abstract class Processor {
 
     public void validateAndProcess(String inputString) throws Exception {
 
-        String[] inputStrArr = inputString.split("");
+        String[] inputStrArr = inputString.split(" ");
         if (inputStrArr[0].equals("")) {
             System.out.println("Empty command");
             return;

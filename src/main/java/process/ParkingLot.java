@@ -29,8 +29,7 @@ public class ParkingLot {
         slotCarMap = new HashMap<Integer, Car>();
         regNoCarSlotMap = new HashMap<String, Integer>();
         colorCarMap = new HashMap<String, List<String>>();
-        System.out.println("Created parking lot with " + noOfParkingSlots + " slots");
-        System.out.println();
+        System.out.println("Created a parking lot with " + noOfParkingSlots + " slots");
     }
 
     public static ParkingLot createParkingLot(int noOfParkingSlots) {
@@ -48,48 +47,50 @@ public class ParkingLot {
         if (noOfParkingSlots == 0) {
             System.out.println("Sorry, parking lot is not created\n");
         } else if (slotCarMap.size() > 0) {
-            System.out.println("Slot No.\tRegistration No.\tColor\n");
+            System.out.println("Slot No.    Registration No    Colour");
             Car car;
             for (int i = 1; i <= noOfParkingSlots; i++) {
                 if (slotCarMap.containsKey(i)) {
                     car = slotCarMap.get(i);
-                    System.out.println(i + "\t" + car.getRegNo() + "\t" + car.getColor());
+                    System.out.println(i + "           " + car.getRegNo() + "      " + car.getColor());
                 }
             }
-            System.out.println();
         } else {
-            System.out.println("Parking lot is empty\n");
+            System.out.println("Parking lot is empty");
         }
     }
 
     public void parkCar(Car car) {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\n");
+            System.out.println("Sorry, parking lot is not created");
             return;
         } else if (slotCarMap.size() == noOfParkingSlots) {
-            System.out.println("Sorry, parking lot is full\n");
+            System.out.println("Sorry, parking lot is full");
             return;
         } else {
             Collections.sort(availableSlots);
             int slot = availableSlots.get(0);
             slotCarMap.put(slot, car);
-            regNoCarSlotMap.put(car.getRegNo(), slot);
-            if (colorCarMap.containsKey(car.getColor())) {
-                List<String> regNoList = colorCarMap.get(car.getColor());
-                colorCarMap.remove(car.getColor());
-                regNoList.add(car.getRegNo());
-                colorCarMap.put(car.getColor(), regNoList);
-            } else {
-                LinkedList<String> regNoList =
-                        new LinkedList<String>();
-                regNoList.add(car.getRegNo());
-                colorCarMap.put(car.getColor(), regNoList);
+            if (!regNoCarSlotMap.containsKey(car.getRegNo())) {
+                regNoCarSlotMap.put(car.getRegNo(), slot);
+                if (colorCarMap.containsKey(car.getColor())) {
+                    List<String> regNoList = colorCarMap.get(car.getColor());
+                    colorCarMap.remove(car.getColor());
+                    regNoList.add(car.getRegNo());
+                    colorCarMap.put(car.getColor(), regNoList);
+                } else {
+                    LinkedList<String> regNoList =
+                            new LinkedList<String>();
+                    regNoList.add(car.getRegNo());
+                    colorCarMap.put(car.getColor(), regNoList);
+                }
+                System.out.println("Allocated slot number: " + slot);
+                availableSlots.remove(0);
+            }else{
+                System.out.println("Car with Registration Number already exist.");
             }
-            System.out.println("Allocated slot number: " + slot + "\n");
-            availableSlots.remove(0);
         }
     }
-
 
     public void leaveSlot(Integer slotNo) {
         if (noOfParkingSlots == 0) {
@@ -105,12 +106,12 @@ public class ParkingLot {
                 }
                 // Add the Lot No. back to available slot list.
                 availableSlots.add(slotNo);
-                System.out.println("Slot number " + slotNo + " is free\n");
+                System.out.println("Slot number " + slotNo + " is free");
             } else {
-                System.out.println("Slot number " + slotNo + " is already empty\n");
+                System.out.println("Slot number " + slotNo + " is already empty");
             }
         } else {
-            System.out.println("Parking lot is empty\n");
+            System.out.println("Parking lot is empty");
         }
     }
 

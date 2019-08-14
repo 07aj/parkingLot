@@ -53,7 +53,7 @@ public abstract class Processor {
                 parkingLot.leaveSlot(slotNo);
                 break;
 
-            case FETCH_CARE_FROM_COLOR:
+            case FETCH_CAR_FROM_COLOR:
                 if (inputStrArr.length != 2) {
                     throw new Exception("Invalid no of arguments for command : " + command);
                 }
@@ -73,6 +73,7 @@ public abstract class Processor {
                 parkingLot.getSlotNumberFromRegNo(inputStrArr[1]);  //regNo
                 break;
             case EXIT:
+                System.exit(1);
                 break;
 
         }

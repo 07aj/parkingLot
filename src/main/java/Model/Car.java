@@ -1,4 +1,4 @@
-package com.gojek.model;
+package Model;
 
 
 public class Car {

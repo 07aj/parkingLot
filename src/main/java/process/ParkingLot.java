@@ -1,6 +1,6 @@
 package process;
 
-import com.gojek.model.Car;
+import Model.Car;
 
 import java.util.*;
 

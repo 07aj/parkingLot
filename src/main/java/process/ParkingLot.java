@@ -36,8 +36,7 @@ public class ParkingLot {
         if(parkingLotProcessor != null) {
             return parkingLotProcessor;
         } else {
-            parkingLotProcessor =
-                    new ParkingLot(noOfParkingSlots);
+            parkingLotProcessor =  new ParkingLot(noOfParkingSlots);
             return parkingLotProcessor;
         }
 
@@ -45,7 +44,7 @@ public class ParkingLot {
 
     public void getStatus() {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\n");
+            System.out.println("Sorry, parking lot is not created");
         } else if (slotCarMap.size() > 0) {
             System.out.println("Slot No.    Registration No    Colour");
             Car car;
@@ -94,7 +93,7 @@ public class ParkingLot {
 
     public void leaveSlot(Integer slotNo) {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\\n");
+            System.out.println("Sorry, parking lot is not created");
         } else if (slotCarMap.size() > 0) {
             Car carToLeave = slotCarMap.get(slotNo);
             if (carToLeave != null) {
@@ -117,30 +116,28 @@ public class ParkingLot {
 
     public void getRegistrationNumbersFromColor(String color) {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\n");
+            System.out.println("Sorry, parking lot is not created");
         } else if (colorCarMap.containsKey(color)) {
             List<String> regNoList = colorCarMap.get(color);
-            System.out.println();
             for (int i = 0; i < regNoList.size(); i++) {
                 if (!(i == regNoList.size() - 1)) {
-                    System.out.print(regNoList.get(i) + ",");
+                    System.out.print(regNoList.get(i) + ", ");
                 } else {
-                    System.out.print(regNoList.get(i));
+                    System.out.println(regNoList.get(i));
                 }
             }
-            System.out.println();
+            //System.out.println();
         } else {
-            System.out.println("Not found\n");
+            System.out.println("Not found");
         }
     }
 
     public void getSlotNumbersFromColor(String color) {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\n");
+            System.out.println("Sorry, parking lot is not created");
         } else if (colorCarMap.containsKey(color)) {
             List<String> regNoList = colorCarMap.get(color);
             List<Integer> slotList = new ArrayList<Integer>();
-            System.out.println();
             for (int i = 0; i < regNoList.size(); i++) {
                 slotList.add(Integer.valueOf(regNoCarSlotMap.get(regNoList.get(i))));
             }
@@ -154,17 +151,17 @@ public class ParkingLot {
             }
             System.out.println();
         } else {
-            System.out.println("Not found\n");
+            System.out.println("Not found");
         }
     }
 
     public void getSlotNumberFromRegNo(String regNo) {
         if (noOfParkingSlots == 0) {
-            System.out.println("Sorry, parking lot is not created\n");
+            System.out.println("Sorry, parking lot is not created");
         } else if (regNoCarSlotMap.containsKey(regNo)) {
             System.out.println(regNoCarSlotMap.get(regNo));
         } else {
-            System.out.println("Not found\n");
+            System.out.println("Not found");
         }
     }
 
